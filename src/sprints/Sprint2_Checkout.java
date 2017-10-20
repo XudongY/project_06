@@ -48,7 +48,11 @@ public class Sprint2_Checkout {
 				for (String child_id : fam.getChildren()) {
 					if (child_id.equals(indivdualList.get(i).getID())) {
 						child_birth = indivdualList.get(i).getBirthday();
+<<<<<<< HEAD
 						// System.out.println("Here!!!");
+=======
+						System.out.println("Here!!!");
+>>>>>>> a5e1d7b343024dab10f5d4456f54c5ecb64360f9
 						us08_birth_before_marriage_of_parents(child_birth,
 								fam.getMarried(), fam.getDivorced(), child_id);
 					}
@@ -62,7 +66,7 @@ public class Sprint2_Checkout {
 	}
 
 	public static void addError(HashMap<String, List<String>> errors,
-			String key, String value) {
+								String key, String value) {
 		if (errors.containsKey(key)) {
 			List<String> res = errors.get(key);
 			res.add(value);
@@ -78,7 +82,7 @@ public class Sprint2_Checkout {
 
 	// US15: There should be fewer than 15 siblings in a family
 	public static boolean us15_fewer_than_15_siblings(List<String> children,
-			String fam_id) {
+													  String fam_id) {
 		if (children != null && children.size() >= 15) {
 			String error = "ERROR: FAMILY: US15: " + fam_id
 					+ ": Has more than 15 childs.";
@@ -90,7 +94,7 @@ public class Sprint2_Checkout {
 
 	// US16: All male members of a family should have the same last name
 	public static boolean us16_male_last_names(String hus_name,
-			String wife_name, String fam_id) {
+											   String wife_name, String fam_id) {
 		if (hus_name != null && wife_name != null) {
 			String[] hus = hus_name.split("/");
 			String[] wife = wife_name.split("/");
@@ -110,7 +114,11 @@ public class Sprint2_Checkout {
 	// and current date should be less than 150 years after birth for all living
 	// people
 	public static boolean us07_less_than_150_years_old(Date birth, Date death,
+<<<<<<< HEAD
 			String id) {
+=======
+													   String id) {
+>>>>>>> a5e1d7b343024dab10f5d4456f54c5ecb64360f9
 		if (birth != null) {
 			int birth_year = Integer
 					.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(birth)
@@ -141,7 +149,11 @@ public class Sprint2_Checkout {
 	// US08: Children should be born after marriage of parents (and not more
 	// than 9 months after their divorce)
 	public static boolean us08_birth_before_marriage_of_parents(Date birth,
+<<<<<<< HEAD
 			Date marriage, Date divorce, String id) {
+=======
+																Date marriage, Date divorce, String id) {
+>>>>>>> a5e1d7b343024dab10f5d4456f54c5ecb64360f9
 		if (birth != null) {
 			if (marriage != null && birth.before(marriage)) {
 				String child_birth = new SimpleDateFormat("yyyy-MM-dd")
