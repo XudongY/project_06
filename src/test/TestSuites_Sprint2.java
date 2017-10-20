@@ -58,10 +58,10 @@ public class TestSuites_Sprint2 extends TestCase {
 		String id = "XXX";
 		boolean res = Sprint2_Checkout.us07_less_than_150_years_old(date1,
 				date2, id);
-		boolean res1 = Sprint2_Checkout.us07_less_than_150_years_old(date1,
-				date2, id);
+		boolean res1 = Sprint2_Checkout.us07_less_than_150_years_old(date3,
+				date4, id);
 		Assert.assertTrue("US07 is true", res == true);
-		Assert.assertFalse("US07 is false", res1 == false);
+		Assert.assertFalse("US07 is false", res1 == true);
 	}
 
 	public void birthBeforeParentsMarriage() throws ParseException {
@@ -69,16 +69,18 @@ public class TestSuites_Sprint2 extends TestCase {
 		Date birth = simpleDateFormat.parse(new String("24 SEP 1995"));
 		Date marriage = simpleDateFormat.parse(new String("22 FEB 1993"));
 		Date divorce = simpleDateFormat.parse(new String("22 FEB 1996"));
-		Date birth1 = simpleDateFormat.parse(new String("24 SEP 2002"));
+		Date birth1 = simpleDateFormat.parse(new String("24 SEP 1990"));
 		Date marriage1 = simpleDateFormat.parse(new String("22 FEB 1993"));
 		Date divorce1 = simpleDateFormat.parse(new String("22 FEB 1996"));
 		String id = "KKK";
 		boolean res = Sprint2_Checkout.us08_birth_before_marriage_of_parents(
 				birth, marriage, divorce, id);
 		boolean res1 = Sprint2_Checkout.us08_birth_before_marriage_of_parents(
-				birth, marriage, divorce, id);
+				birth1, marriage1, divorce1, id);
+		//System.out.println(res);
 		Assert.assertTrue("US08 is true", res == true);
-		Assert.assertFalse("US08 is false", res1 == false);
+		//System.out.println(res1);
+		Assert.assertFalse("US08 is false", res1 == true);
 	}
 
 	public static junit.framework.Test suite() {
