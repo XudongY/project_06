@@ -1,9 +1,7 @@
 package important;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Print {
 	public static void print_arraylist_family(ArrayList<Family> tobedisplayed) {
@@ -25,36 +23,30 @@ public class Print {
 
 		for (int i = 0; i < tobedisplayed.size(); i++) {
 			Family obj = tobedisplayed.get(i);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date marriage = obj.getMarried();
+			Date divorce = obj.getDivorced();
 			if (obj.getDivorced() != null) {
 				System.out
 						.format("%5s %1s%1s %12s%2s %12s%2s %1s%1s %16s%4s %1s%1s %16s%4s %72s%1s",
-								"|",
-								obj.getID(),
-								"|",
-								obj.getMarried() == null ? null : obj
-										.getMarried().toString()
-										.substring(0, 11), "|",
-								obj.getDivorced().toString().substring(0, 11),
-								"|", obj.getHusbandID(), "|", obj
-										.getHusbandName(), "|",
-								obj.getWifeID(), "|", obj.getWifeName(), "|",
+								"|", obj.getID(), "|",
+								sdf.format(marriage), "|",
+								sdf.format(divorce), "|",
+								obj.getHusbandID(), "|",
+								obj.getHusbandName(), "|",
+								obj.getWifeID(), "|",
+								obj.getWifeName(), "|",
 								String.valueOf(obj.getChildren()), "|");
 			} else {
 				System.out
 						.format("%5s %1s%1s %12s%2s %12s%2s %1s%1s %16s%4s %1s%1s %16s%4s %72s%1s",
-								"|",
-								obj.getID(),
-								"|",
-								obj.getMarried() == null ? null : obj
-										.getMarried().toString()
-										.substring(0, 11),
-								"|",
-								obj.getDivorced() == null ? null : obj
-										.getDivorced().toString()
-										.substring(0, 11), "|", obj
-										.getHusbandID(), "|", obj
-										.getHusbandName(), "|",
-								obj.getWifeID(), "|", obj.getWifeName(), "|",
+								"|", obj.getID(), "|",
+								sdf.format(marriage), "|",
+								"NA", "|",
+								obj.getHusbandID(), "|",
+								obj.getHusbandName(), "|",
+								obj.getWifeID(), "|",
+								obj.getWifeName(), "|",
 								String.valueOf(obj.getChildren()), "|");
 			}
 			System.out.println();
