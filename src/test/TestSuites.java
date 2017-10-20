@@ -14,7 +14,6 @@ import junit.framework.TestSuite;
 import org.junit.Assert;
 
 import sprints.Sprint1_Checkout;
-import sprints.Sprint2_Checkout;
 
 public class TestSuites extends TestCase {
 
@@ -147,27 +146,6 @@ public class TestSuites extends TestCase {
 
 	}
 
-	public void fewerThan15Siblings() throws ParseException {
-		List<String> children = new ArrayList<String>();
-		int count = 1;
-		String fam_id = "NNN";
-		for (int i = 0; i < 13; i++) {
-			children.add(count + "k");
-		}
-		boolean res = Sprint2_Checkout.us15_fewer_than_15_siblings(children,
-				fam_id);
-		Assert.assertTrue("US15 is true", res == true);
-	}
-
-	public void maleLastNames() throws ParseException {
-		String hus_name = "Yutong /Zhao/";
-		String wife_name = "Xintong /Zhao/";
-		String fam_id = "NNN";
-		boolean res = Sprint2_Checkout.us16_male_last_names(hus_name,
-				wife_name, fam_id);
-		Assert.assertTrue("US16 is true", res == true);
-	}
-
 	public static junit.framework.Test suite() {
 		TestSuite s = new TestSuite();
 		s.addTest(new TestSuites("Deathafterbirth"));
@@ -178,8 +156,7 @@ public class TestSuites extends TestCase {
 		s.addTest(new TestSuites("birth_before_marriage"));
 		// s.addTest(new TestSuites("No_bigamy"));
 		s.addTest(new TestSuites("isValid"));
-		s.addTest(new TestSuites("fewerThan15Siblings"));
-		s.addTest(new TestSuites("maleLastNames"));
+		;
 		return s;
 	}
 }
