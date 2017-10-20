@@ -48,7 +48,7 @@ public class Sprint2_Checkout {
 				for (String child_id : fam.getChildren()) {
 					if (child_id.equals(indivdualList.get(i).getID())) {
 						child_birth = indivdualList.get(i).getBirthday();
-						System.out.println("Here!!!");
+						// System.out.println("Here!!!");
 						us08_birth_before_marriage_of_parents(child_birth,
 								fam.getMarried(), fam.getDivorced(), child_id);
 					}

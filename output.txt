@@ -1,36 +1,7 @@
 If you want to choose a file, please press 1; if you want to test in console, please press 2.
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
-Here!!!
     |           ID         |         NAME      |  GENDER |   BIRTHDAY  |   AGE   | ALIVE|    DEATH    |                CHILD                           |               SPOUSE                           | 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-    |@I6000000066693817211@|   Yutong /Zhao/   |    M    | Jul 11 2016 |    1    | true |          NA |                        [@F6000000066694413864@]|                                              NA|
+    |@I6000000066693817211@|   Yutong /Zhao/   |    M    | Jul 11 1916 |  101    | true |          NA |                        [@F6000000066694413864@]|                                              NA|
     |@I6000000066693817212@|      Hui /Wang/   |    F    | Dec 08 1996 |   21    | true |          NA |                        [@F6000000066695102020@]|                        [@F6000000066694413864@]|
     |@I6000000066694413859@|     Yang /Zhao/   |    M    | Sep 24 2008 |    9    | true |          NA |                        [@F6000000066694924894@]|                        [@F6000000066694413864@]|
     |@I6000000066695185981@|    Zongmei /Wu/   |    F    | Mar 15 1732 |    2    |false | Feb 14 2015 |                                              NA|                        [@F6000000066695102020@]|
@@ -69,6 +40,9 @@ US02: ERROR: FAMILY: US02: @F6000000066694413864@: Married 1992-07-25 before hus
 US02: ERROR: FAMILY: US02: @F6000000066694413864@: Married 1992-07-25 before wife's (@I6000000066693817212@) birth on 1996-12-08
 
 Sprint2 Checkout Result:
+US08: ERROR: INDIVIDUAL: US08: @I6000000066693817211@: Born on 1916-07-11 before parents marry on 1992-07-25
+US08: ERROR: INDIVIDUAL: US08: @I6000000066693817211@: Born on 1916-07-11 before parents marry on 1992-07-25
+US08: ERROR: INDIVIDUAL: US08: @I6000000066693817211@: Born on 1916-07-11 before parents marry on 1962-09-17
 US16: ERRPR: FAMILY: US16: @F6000000066694413864@: Does not have the same male last name.
 US16: ERRPR: FAMILY: US16: @F6000000066695102020@: Does not have the same male last name.
 US16: ERRPR: FAMILY: US16: @F6000000066694924894@: Does not have the same male last name.

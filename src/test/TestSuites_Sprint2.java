@@ -29,14 +29,25 @@ public class TestSuites_Sprint2 extends TestCase {
 	// Done by Yutong
 	public void fewerThan15Siblings() throws ParseException {
 		List<String> children = new ArrayList<String>();
+		List<String> children1 = new ArrayList<String>();
 		int count = 1;
 		String fam_id = "NNN";
 		for (int i = 0; i < 13; i++) {
+			count++;
 			children.add(count + "k");
 		}
 		boolean res = Sprint2_Checkout.us15_fewer_than_15_siblings(children,
 				fam_id);
-		Assert.assertTrue("US15 is true", res == true);
+		Assert.assertTrue("US15 is true", res);
+		count = 0;
+		for (int i = 0; i < 17; i++) {
+			count++;
+			children1.add(count + "k");
+		}
+		boolean res1 = Sprint2_Checkout.us15_fewer_than_15_siblings(children1,
+				fam_id);
+		Assert.assertFalse("US07 is false!", res1);
+
 	}
 
 	public void maleLastNames() throws ParseException {
@@ -45,7 +56,12 @@ public class TestSuites_Sprint2 extends TestCase {
 		String fam_id = "NNN";
 		boolean res = Sprint2_Checkout.us16_male_last_names(hus_name,
 				wife_name, fam_id);
-		Assert.assertTrue("US16 is true", res == true);
+		Assert.assertTrue("US16 is true", res);
+		String hus_name1 = "Yutong /K/";
+		String wife_name1 = "Xintong /T/";
+		boolean res1 = Sprint2_Checkout.us16_male_last_names(hus_name1,
+				wife_name1, fam_id);
+		Assert.assertFalse("US16 is false", res1);
 	}
 
 	// Done by Xudong
