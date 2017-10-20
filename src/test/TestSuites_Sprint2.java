@@ -58,8 +58,10 @@ public class TestSuites_Sprint2 extends TestCase {
 		String id = "XXX";
 		boolean res = Sprint2_Checkout.us07_less_than_150_years_old(date1,
 				date2, id);
+		boolean res1 = Sprint2_Checkout.us07_less_than_150_years_old(date1,
+				date2, id);
 		Assert.assertTrue("US07 is true", res == true);
-		Assert.assertFalse("US07 is false", res == false);
+		Assert.assertFalse("US07 is false", res1 == false);
 	}
 
 	public void birthBeforeParentsMarriage() throws ParseException {
@@ -73,8 +75,10 @@ public class TestSuites_Sprint2 extends TestCase {
 		String id = "KKK";
 		boolean res = Sprint2_Checkout.us08_birth_before_marriage_of_parents(
 				birth, marriage, divorce, id);
+		boolean res1 = Sprint2_Checkout.us08_birth_before_marriage_of_parents(
+				birth, marriage, divorce, id);
 		Assert.assertTrue("US08 is true", res == true);
-		Assert.assertFalse("US08 is false", res == false);
+		Assert.assertFalse("US08 is false", res1 == false);
 	}
 
 	public static junit.framework.Test suite() {
