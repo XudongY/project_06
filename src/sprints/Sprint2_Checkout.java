@@ -39,18 +39,20 @@ public class Sprint2_Checkout {
 					husband_name = indivdualList.get(i).getName();
 					husband_death = indivdualList.get(i).getDeath();
 					husband_birth = indivdualList.get(i).getBirthday();
+					husband_gender = indivdualList.get(i).getGender();
 				}
 				if (fam.getWifeID().equals(indivdualList.get(i).getID())) {
 					wife_id = indivdualList.get(i).getID();
 					wife_name = indivdualList.get(i).getName();
 					wife_death = indivdualList.get(i).getDeath();
 					wife_birth = indivdualList.get(i).getBirthday();
+					wife_gender = indivdualList.get(i).getGender();
 				}
 			}
 			us15_fewer_than_15_siblings(fam.getChildren(), fam.getID());
 			us16_male_last_names(husband_name, wife_name, fam.getID());
-			us12_parents_not_too_old(husband_birth, wife_birth, children, indivdualList);
-			us21_correct_gender_for_role(husband_gender, wife_gender);
+			us12_parents_not_too_old(fam.getID(), husband_birth, wife_birth, children, indivdualList);
+			us21_correct_gender_for_role(fam.getID(), husband_gender, wife_gender);
 		}
 		return errors;
 	}
@@ -101,21 +103,28 @@ public class Sprint2_Checkout {
 	// US07 and US08 are done by Xudong
 
 	// US12 and US21 are done by Chenglin
-	public static boolean us12_parents_not_too_old(Date husband_birth, Date wife_birth, List<String> children, List<Indivdual> indivdualList) {
+	public static boolean us12_parents_not_too_old(String family_id, Date husband_birth, Date wife_birth, List<String> children, List<Indivdual> indivdualList) {
 		boolean result = true;
 		for (String child : children) {
 			for (int j = 0; j < indivdualList.size(); j++) {
 				if (child.equals(indivdualList.get(j).getID())) {
 					Date child_birth = indivdualList.get(j).getBirthday();
-					Calendar child_cal = DateToCalendar(child_birth);
-					Calendar husband_cal = DateToCalendar(husband_birth);
-					Calendar wife_cal = DateToCalendar(wife_birth);
-					int yearsInBetween_father = husband_cal.get(Calendar.YEAR) - child_cal.get(Calendar.YEAR);
-					int monthsInBetween_father = husband_cal.get(Calendar.MONTH) - child_cal.get(Calendar.MONTH);
-					int daysInBetween_father = husband_cal.get(Calendar.DATE) - child_cal.get(Calendar.DATE);
-					int yearsInBetween_mother = wife_cal.get(Calendar.YEAR) - child_cal.get(Calendar.YEAR);
-					int monthsInBetween_mother = wife_cal.get(Calendar.MONTH) - child_cal.get(Calendar.MONTH);
-					int daysInBetween_mother = wife_cal.get(Calendar.DATE) - child_cal.get(Calendar.DATE);
+					String child_id = indivdualList.get(j).getID();
+					int husband_year = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(husband_birth).substring(0, 4));
+					int wife_year = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(wife_birth).substring(0, 4));
+					int child_year = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(child_birth).substring(0, 4));
+					int husband_month = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(husband_birth).substring(6, 7));
+					int wife_month = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(wife_birth).substring(6, 7));
+					int child_month = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(child_birth).substring(6, 7));
+					int husband_day = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(husband_birth).substring(9, 10));
+					int wife_day = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(wife_birth).substring(9, 10));
+					int child_day = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(child_birth).substring(9, 10));
+					int yearsInBetween_father = husband_year - child_year;
+					int monthsInBetween_father = husband_month - child_month;
+					int daysInBetween_father = husband_day - child_day;
+					int yearsInBetween_mother = wife_year - child_year;
+					int monthsInBetween_mother = wife_month - child_month;
+					int daysInBetween_mother = wife_day - child_day;
 					if (yearsInBetween_father < 60) {
 						continue;
 					} else if (yearsInBetween_father == 60) {
@@ -126,15 +135,18 @@ public class Sprint2_Checkout {
 								continue;
 							} else {
 								result = false;
-								addError(errors, "US12", "Father error");
+								addError(errors, "US12", "ERROR: FAMILY: US12: " + family_id
+										+ ": Father is more than 60 years older than child (" + child_id + ").");
 							}
 						} else {
 							result = false;
-							addError(errors, "US12", "Father error");
+							addError(errors, "US12", "ERROR: FAMILY: US12: " + family_id
+									+ ": Father is more than 60 years older than child (" + child_id + ").");
 						}
 					} else {
 						result = false;
-						addError(errors, "US12", "Father error");
+						addError(errors, "US12", "ERROR: FAMILY: US12: " + family_id
+								+ ": Father is more than 60 years older than child (" + child_id + ").");
 					}
 
 					if (yearsInBetween_mother < 60) {
@@ -144,15 +156,18 @@ public class Sprint2_Checkout {
 							if (daysInBetween_mother >= 0) {
 							} else {
 								result = false;
-								addError(errors, "US12", "Mother error");
+								addError(errors, "US12", "ERROR: FAMILY: US12: " + family_id
+								+ ": Mother is more than 60 years older than child (" + child_id + ").");
 							}
 						} else {
 							result = false;
-							addError(errors, "US12", "Mother error");
+							addError(errors, "US12", "ERROR: FAMILY: US12: " + family_id
+									+ ": Mother is more than 60 years older than child (" + child_id + ").");
 						}
 					} else {
 						result = false;
-						addError(errors, "US12", "Mother error");
+						addError(errors, "US12", "ERROR: FAMILY: US12: " + family_id
+								+ ": Mother is more than 60 years older than child (" + child_id + ").");
 					}
 				}
 			}
@@ -160,29 +175,19 @@ public class Sprint2_Checkout {
 		return result;
 	}
 
-	public static Calendar DateToCalendar(Date date ) {
-		Calendar cal = null;
-		try {
-			DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-			date = formatter.parse(date.toString());
-			cal=Calendar.getInstance();
-			cal.setTime(date);
-		}
-		catch (ParseException e)
-		{
-			System.out.println("Exception :"+e);
-		}
-		return cal;
-	}
-
-	public static boolean us21_correct_gender_for_role (String husband_gender, String wife_gender) {
+	public static boolean us21_correct_gender_for_role (String family_id, String husband_gender, String wife_gender) {
 		boolean result = true;
-		if (!husband_gender.equals("M")) addError(errors,"US21", "Wrong gender for husband");
-		else result = false;
-		if (!wife_gender.equals("F")) addError(errors,"US21", "Wrong gender for wife");
-		else result = false;
+		if (!husband_gender.equals("M")) {
+			addError(errors, "US21", "ERROR: FAMILY: US21: " + family_id
+					+ ": Wrong gender for husband.");
+			result = false;
+		}
+		if (!wife_gender.equals("F")) {
+			addError(errors,"US21", "ERROR: FAMILY: US21: " + family_id
+					+ ": Wrong gender for wife.");
+			result = false;
+		}
 		return result;
 	}
 	// US35 and US36 are done by Disha
-
 }
