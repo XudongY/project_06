@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
 import important.Indivdual;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -165,6 +164,36 @@ public class TestSuites_Sprint2 extends TestCase {
 		boolean res4 = Sprint2_Checkout.us21_correct_gender_for_role(family_id, husband_gender4, wife_gender4);
 		Assert.assertTrue("US21 is false", res4 == false);
 	}
+	public void recent_births() {
+
+		String dateInString_1 = "10-Jan-2016";
+		String dateInString_2 = "10-Oct-2017";
+		SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+		try{ Date date_Date_format_1 = format.parse(dateInString_1);
+			Date date_Date_format_2 = format.parse(dateInString_2);
+			boolean res1 = Sprint2_Checkout.check_for_recent_births("I@134253@",date_Date_format_1);
+			Assert.assertTrue("US35 is false", res1 == false);
+			boolean res3 = Sprint2_Checkout.check_for_recent_births("I@1333353@",date_Date_format_2);
+			Assert.assertTrue("US35 is true", res1 == true);}catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+}
+	public void recent_deaths() {
+
+		String dateInString_1 = "10-Jan-2016";
+		String dateInString_2 = "10-Oct-2017";
+		SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+		try{ Date date_Date_format_1 = format.parse(dateInString_1);
+			Date date_Date_format_2 = format.parse(dateInString_2);
+			boolean res1 = Sprint2_Checkout.check_for_recent_births("I@134253@",date_Date_format_1);
+			Assert.assertTrue("US36 is false", res1 == false);
+			boolean res3 = Sprint2_Checkout.check_for_recent_births("I@1333353@",date_Date_format_2);
+			Assert.assertTrue("US36 is true", res1 == true);}catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	public static junit.framework.Test suite() {
 		TestSuite s = new TestSuite();
@@ -174,6 +203,8 @@ public class TestSuites_Sprint2 extends TestCase {
 		s.addTest(new TestSuites_Sprint2("birthBeforeParentsMarriage"));
 		s.addTest(new TestSuites_Sprint2("parentsNotTooOld"));
 		s.addTest(new TestSuites_Sprint2("correctGenderForRole"));
+		s.addTest(new TestSuites_Sprint2("recent_births"));
+		s.addTest(new TestSuites_Sprint2("recent_deaths"));
 		return s;
 	}
 }
