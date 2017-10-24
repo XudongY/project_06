@@ -23,7 +23,7 @@ public class Print {
 
 		for (int i = 0; i < tobedisplayed.size(); i++) {
 			Family obj = tobedisplayed.get(i);
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date marriage = obj.getMarried();
 			Date divorce = obj.getDivorced();
 			if (obj.getDivorced() != null) {
