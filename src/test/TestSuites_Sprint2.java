@@ -1,13 +1,13 @@
 package test;
 
+import important.Indivdual;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
-import important.Indivdual;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
@@ -38,7 +38,8 @@ public class TestSuites_Sprint2 extends TestCase {
 			count++;
 			children.add(count + "k");
 		}
-		boolean res = Sprint2_Checkout.us15_fewer_than_15_siblings(children, fam_id);
+		boolean res = Sprint2_Checkout.us15_fewer_than_15_siblings(children,
+				fam_id);
 		Assert.assertTrue("US15 is true", res);
 		count = 0;
 		for (int i = 0; i < 17; i++) {
@@ -55,7 +56,8 @@ public class TestSuites_Sprint2 extends TestCase {
 		String hus_name = "Yutong /Zhao/";
 		String wife_name = "Xintong /Zhao/";
 		String fam_id = "NNN";
-		boolean res = Sprint2_Checkout.us16_male_last_names(hus_name, wife_name, fam_id);
+		boolean res = Sprint2_Checkout.us16_male_last_names(hus_name,
+				wife_name, fam_id);
 		Assert.assertTrue("US16 is true", res);
 		String hus_name1 = "Yutong /K/";
 		String wife_name1 = "Xintong /T/";
@@ -93,20 +95,20 @@ public class TestSuites_Sprint2 extends TestCase {
 				birth, marriage, divorce, id);
 		boolean res1 = Sprint2_Checkout.us08_birth_before_marriage_of_parents(
 				birth1, marriage1, divorce1, id);
-		//System.out.println(res);
+		// System.out.println(res);
 		Assert.assertTrue("US08 is true", res == true);
-		//System.out.println(res1);
+		// System.out.println(res1);
 		Assert.assertFalse("US08 is false", res1 == true);
 	}
 
-	//Chenglin US12 & US21
+	// Chenglin US12 & US21
 	public void parentsNotTooOld() throws ParseException {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String family_id = "fam_id";
 		Date husband_birth = simpleDateFormat.parse("1940-08-26");
 		Date wife_birth = simpleDateFormat.parse("1940-08-24");
-		List<String> children_id = new ArrayList<>();
-		List<Indivdual> childrenList =  new ArrayList<>();
+		List<String> children_id = new ArrayList<String>();
+		List<Indivdual> childrenList = new ArrayList<Indivdual>();
 
 		children_id.add("01");
 		children_id.add("02");
@@ -126,11 +128,11 @@ public class TestSuites_Sprint2 extends TestCase {
 		child04.setID("04");
 		child05.setID("05");
 
-		child01.setBirthday(simpleDateFormat.parse(new String ("2000-07-25")));
-		child02.setBirthday(simpleDateFormat.parse(new String ("2000-08-23")));
-		child03.setBirthday(simpleDateFormat.parse(new String ("2000-08-25")));
-		child04.setBirthday(simpleDateFormat.parse(new String ("2000-08-27")));
-		child05.setBirthday(simpleDateFormat.parse(new String ("2000-09-23")));
+		child01.setBirthday(simpleDateFormat.parse(new String("2000-07-25")));
+		child02.setBirthday(simpleDateFormat.parse(new String("2000-08-23")));
+		child03.setBirthday(simpleDateFormat.parse(new String("2000-08-25")));
+		child04.setBirthday(simpleDateFormat.parse(new String("2000-08-27")));
+		child05.setBirthday(simpleDateFormat.parse(new String("2000-09-23")));
 
 		childrenList.add(child01);
 		childrenList.add(child02);
@@ -138,10 +140,14 @@ public class TestSuites_Sprint2 extends TestCase {
 		childrenList.add(child04);
 		childrenList.add(child05);
 		for (String child_id : children_id) {
-			boolean res = Sprint2_Checkout.us12_parents_not_too_old(family_id, husband_birth, wife_birth, child_id, childrenList);
+			boolean res = Sprint2_Checkout.us12_parents_not_too_old(family_id,
+					husband_birth, wife_birth, child_id, childrenList);
 			if (child_id.equals("01") || child_id.equals("02")) {
-				Assert.assertTrue("US12 is true for child: " + child_id, res == true);
-			} else Assert.assertTrue("US12 is false for child: " + child_id, res == false);
+				Assert.assertTrue("US12 is true for child: " + child_id,
+						res == true);
+			} else
+				Assert.assertTrue("US12 is false for child: " + child_id,
+						res == false);
 		}
 	}
 
@@ -156,14 +162,59 @@ public class TestSuites_Sprint2 extends TestCase {
 		String husband_gender4 = "F";
 		String wife_gender4 = "M";
 
-		boolean res1 = Sprint2_Checkout.us21_correct_gender_for_role(family_id, husband_gender1, wife_gender1);
+		boolean res1 = Sprint2_Checkout.us21_correct_gender_for_role(family_id,
+				husband_gender1, wife_gender1);
 		Assert.assertTrue("US21 is true", res1 == true);
-		boolean res2 = Sprint2_Checkout.us21_correct_gender_for_role(family_id, husband_gender2, wife_gender2);
+		boolean res2 = Sprint2_Checkout.us21_correct_gender_for_role(family_id,
+				husband_gender2, wife_gender2);
 		Assert.assertTrue("US21 is false", res2 == false);
-		boolean res3 = Sprint2_Checkout.us21_correct_gender_for_role(family_id, husband_gender3, wife_gender3);
+		boolean res3 = Sprint2_Checkout.us21_correct_gender_for_role(family_id,
+				husband_gender3, wife_gender3);
 		Assert.assertTrue("US21 is false", res3 == false);
-		boolean res4 = Sprint2_Checkout.us21_correct_gender_for_role(family_id, husband_gender4, wife_gender4);
+		boolean res4 = Sprint2_Checkout.us21_correct_gender_for_role(family_id,
+				husband_gender4, wife_gender4);
 		Assert.assertTrue("US21 is false", res4 == false);
+	}
+
+	// Done by Disha Sareen
+	public void recent_births() {
+
+		String dateInString_1 = "10-Jan-2016";
+		String dateInString_2 = "10-Oct-2017";
+		SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+		try {
+			Date date_Date_format_1 = format.parse(dateInString_1);
+			Date date_Date_format_2 = format.parse(dateInString_2);
+			boolean res1 = Sprint2_Checkout.check_for_recent_births(
+					"I@134253@", date_Date_format_1);
+			Assert.assertTrue("US35 is false", res1 == false);
+			boolean res3 = Sprint2_Checkout.check_for_recent_births(
+					"I@1333353@", date_Date_format_2);
+			Assert.assertTrue("US35 is true", res1 == true);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void recent_deaths() {
+
+		String dateInString_1 = "10-Jan-2016";
+		String dateInString_2 = "10-Oct-2017";
+		SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+		try {
+			Date date_Date_format_1 = format.parse(dateInString_1);
+			Date date_Date_format_2 = format.parse(dateInString_2);
+			boolean res1 = Sprint2_Checkout.check_for_recent_births(
+					"I@134253@", date_Date_format_1);
+			Assert.assertTrue("US36 is false", res1 == false);
+			boolean res3 = Sprint2_Checkout.check_for_recent_births(
+					"I@1333353@", date_Date_format_2);
+			Assert.assertTrue("US36 is true", res1 == true);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public static junit.framework.Test suite() {
@@ -174,6 +225,8 @@ public class TestSuites_Sprint2 extends TestCase {
 		s.addTest(new TestSuites_Sprint2("birthBeforeParentsMarriage"));
 		s.addTest(new TestSuites_Sprint2("parentsNotTooOld"));
 		s.addTest(new TestSuites_Sprint2("correctGenderForRole"));
+		s.addTest(new TestSuites_Sprint2("recent_births"));
+		s.addTest(new TestSuites_Sprint2("recent_deaths"));
 		return s;
 	}
 }

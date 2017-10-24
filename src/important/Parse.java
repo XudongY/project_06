@@ -59,7 +59,7 @@ public class Parse {
 		} else if (tag.contains("DATE") && LegalTags.checkTags(tag)) {
 			String[] age = arguments.split(" ");
 			int age1 = Integer.parseInt(age[age.length - 1]);
-			indivduals.get(indivduals.size() - 1).setAge(2017 - age1);
+			// indivduals.get(indivduals.size() - 1).setAge(2017 - age1);
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
 					"dd MMM yyyy");
 			try {
@@ -71,6 +71,17 @@ public class Parse {
 				}
 			} catch (ParseException ex) {
 				System.out.println("Exception " + ex);
+			}
+			if (indivduals.get(indivduals.size() - 1).getDeath() != null) {
+
+				int death_year = Integer.parseInt(new SimpleDateFormat(
+						"yyyy-MM-dd").format(
+						indivduals.get(indivduals.size() - 1).getDeath())
+						.substring(0, 4));
+				System.out.println("Death year: " + death_year);
+				indivduals.get(indivduals.size() - 1).setAge(death_year - age1);
+			} else {
+				indivduals.get(indivduals.size() - 1).setAge(2017 - age1);
 			}
 		} else if (tag.contains("BIRT") && LegalTags.checkTags(tag)) {
 			pre = "BIRT";
