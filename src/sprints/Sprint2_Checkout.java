@@ -23,43 +23,13 @@ public class Sprint2_Checkout {
 			String ID = in.getID();
 			Date DeathDay=in.getDeath();
 			Date Birthday = in.getBirthday();
+			check_for_recent_births(ID,Birthday);
+			check_for_recent_deaths(ID,Birthday);
 			//get 30 days back date
-			Calendar cal = Calendar.getInstance();
-			cal.add(Calendar.DATE, -30);
-			SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
 
-			//get current date in string
-			String old_date_String_format = format.format(cal.getTime());
-			System.out.println("date is : " + old_date_String_format);
-
-			//convert  String- date to Date format
-			try {
-				Date old_date_Date_format = format.parse(old_date_String_format);
-				//Date here=format.format(old_date_Date_format);
-				System.out.println("date is  :" + old_date_Date_format);
-				if (Birthday.before(old_date_Date_format)) {
-				} else {
-					recent_births.put(ID, Birthday);
-				}
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-            try {
-                Date old_date_Date_format = format.parse(old_date_String_format);
-                //Date here=format.format(old_date_Date_format);
-                System.out.println("date is  :" + old_date_Date_format);
-                if (DeathDay.before(old_date_Date_format)) {
-                } else {
-                    recent_deaths.put(ID, Birthday);
-                }
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
 		}
 		us35_list_recent_births(recent_births);
         us36_list_recent_deaths(recent_deaths);
-		{
-
 
 			for (Family fam : familyList) {
 				String husband_id = null;
@@ -92,18 +62,19 @@ public class Sprint2_Checkout {
 			return errors;
 		}
 
-	public static void addError(HashMap<String, List<String>> errors,
+
+			public static void addError(HashMap<String, List<String>> errors,
 								String key, String value) {
-		if (errors.containsKey(key)) {
+			if (errors.containsKey(key)) {
 			List<String> res = errors.get(key);
 			res.add(value);
 			errors.put(key, res);
-		} else {
+				} else {
 			List<String> res = new ArrayList<String>();
 			res.add(value);
 			errors.put(key, res);
-		}
-	}
+			}
+			}
 
 	// US15 and US16 are done by Yutong Zhao
 
@@ -136,7 +107,55 @@ public class Sprint2_Checkout {
 	}
 
 	// US35 and US36 are done by Disha
+	public static boolean check_for_recent_births(String ID, Date Birthday){
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE, -30);
+		SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
 
+		//get current date in string
+		String old_date_String_format = format.format(cal.getTime());
+		System.out.println("date is : " + old_date_String_format);
+
+		//convert  String- date to Date format
+		try {
+			Date old_date_Date_format = format.parse(old_date_String_format);
+			//Date here=format.format(old_date_Date_format);
+			System.out.println("date is  :" + old_date_Date_format);
+			if (Birthday.before(old_date_Date_format)) {
+				return false;
+			} else {
+				recent_births.put(ID, Birthday);
+				return true;
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return true;
+
+	}
+
+	public static boolean check_for_recent_deaths(String ID, Date DeathDay){
+		try {
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.DATE, -30);
+			SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+			//get current date in string
+			String old_date_String_format = format.format(cal.getTime());
+			System.out.println("date is : " + old_date_String_format);
+			Date old_date_Date_format = format.parse(old_date_String_format);
+			//Date here=format.format(old_date_Date_format);
+			System.out.println("date is  :" + old_date_Date_format);
+			if (DeathDay.before(old_date_Date_format)) {
+				return false;
+			} else {
+				recent_deaths.put(ID, DeathDay);
+				return true;
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
     public static void us35_list_recent_births(HashMap map)
     {
         System.out.println("The following are recent births: \n");
@@ -170,5 +189,4 @@ public class Sprint2_Checkout {
 	// US12 and US21 are done by Chenglin
 
 
-}
-}
+	}
