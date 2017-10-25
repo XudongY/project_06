@@ -166,8 +166,7 @@ public class Sprint2_Checkout {
 		}
 		return true;
 	}
-    public static void us35_list_recent_births(HashMap map)
-    {
+    public static void us35_list_recent_births(HashMap map) {
         System.out.println("The following are recent births: \n");
         Set mapSet=(Set)map.entrySet();
         Iterator mapIterator=mapSet.iterator();
@@ -180,8 +179,7 @@ public class Sprint2_Checkout {
             System.out.println("ID : " + keyValue + " has BIRTHDAY:  " + value);
         }
     }
-    public static void us36_list_recent_deaths(HashMap map)
-    {
+    public static void us36_list_recent_deaths(HashMap map) {
         System.out.println("The following are recent deaths: \n");
         Set mapSet=(Set)map.entrySet();
         Iterator mapIterator=mapSet.iterator();
@@ -201,12 +199,9 @@ public class Sprint2_Checkout {
     // people
     public static boolean us07_less_than_150_years_old(Date birth, Date death, String id) {
         if (birth != null) {
-            int birth_year = Integer
-                    .parseInt(new SimpleDateFormat("yyyy-MM-dd").format(birth)
-                            .substring(0, 4));
+            int birth_year = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(birth).substring(0, 4));
             if (death != null) {
-                int death_year = Integer.parseInt(new SimpleDateFormat(
-                        "yyyy-MM-dd").format(death).substring(0, 4));
+                int death_year = Integer.parseInt(new SimpleDateFormat("yyyy-MM-dd").format(death).substring(0, 4));
                 if ((death_year - birth_year) >= 150) {
                     String error = "ERROR: INDIVIDUAL: US07: " + id
                             + ": Age is more than 150.";
@@ -217,8 +212,7 @@ public class Sprint2_Checkout {
                 int current_year = Integer.parseInt(new SimpleDateFormat(
                         "yyyy-MM-dd").format(new Date()).substring(0, 4));
                 if ((current_year - birth_year) >= 150) {
-                    String error = "ERROR: INDIVIDUAL: US07: " + id
-                            + ": Age is more than 150.";
+                    String error = "ERROR: INDIVIDUAL: US07: " + id + ": Age is more than 150.";
                     addError(errors, "US07", error);
                     return false;
                 }
@@ -270,9 +264,7 @@ public class Sprint2_Checkout {
                 Date child_birth = indivdualList.get(j).getBirthday();
                 boolean resFather = us12_helper_check_age_difference(husband_birth, child_birth);
                 boolean resMother = us12_helper_check_age_difference(wife_birth, child_birth);
-                if (resFather && resMother) {
-                    result = true;
-                }
+                if (resFather && resMother) result = true;
                 if (resFather == false) {
                     result = false;
                     addError(errors, "US12", "ERROR: FAMILY: US12: " + family_id
@@ -305,12 +297,10 @@ public class Sprint2_Checkout {
         boolean result;
         if (yearsDiff < 60) result = true;
         else if (yearsDiff == 60) {
-            if (monthsDiff < 0) {
-                result = true;
-            } else if (monthsDiff == 0) {
-                if (daysInDiff <= 0) {
-                    result = true;
-                } else result = false;
+            if (monthsDiff < 0) result = true;
+            else if (monthsDiff == 0) {
+                if (daysInDiff <= 0) result = true;
+                else result = false;
             } else result = false;
         } else result = false;
         return result;
@@ -319,16 +309,13 @@ public class Sprint2_Checkout {
     public static boolean us21_correct_gender_for_role(String family_id, String husband_gender, String wife_gender) {
         boolean result = true;
         if (!husband_gender.equals("M")) {
-            addError(errors, "US21", "ERROR: FAMILY: US21: " + family_id
-                    + ": Wrong gender for husband.");
+            addError(errors, "US21", "ERROR: FAMILY: US21: " + family_id + ": Wrong gender for husband.");
             result = false;
         }
         if (!wife_gender.equals("F")) {
-            addError(errors, "US21", "ERROR: FAMILY: US21: " + family_id
-                    + ": Wrong gender for wife.");
+            addError(errors, "US21", "ERROR: FAMILY: US21: " + family_id + ": Wrong gender for wife.");
             result = false;
         }
         return result;
     }
-
-	}
+}
