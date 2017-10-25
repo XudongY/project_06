@@ -55,7 +55,9 @@ public class Read {
 				Print.print_arraylist_indivdual((ArrayList<Indivdual>) indivdualList);
 				Print.print_arraylist_family((ArrayList<Family>) familiesList);
 				// Print.print_Error((ArrayList<String>) errors);
+				System.out.println("\nSprint1 Checkout Result:");
 				Print.print_Error((HashMap<String, List<String>>) errors_sprint1);
+				System.out.println("\nSprint2 Checkout Result:");
 				Print.print_Error((HashMap<String, List<String>>) errors_sprint2);
 				// Close the input stream
 				br.close();
