@@ -6,8 +6,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
-
+import important.Indivdual;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
@@ -38,8 +39,7 @@ public class TestSuites_Sprint2 extends TestCase {
 			count++;
 			children.add(count + "k");
 		}
-		boolean res = Sprint2_Checkout.us15_fewer_than_15_siblings(children,
-				fam_id);
+		boolean res = Sprint2_Checkout.us15_fewer_than_15_siblings(children, fam_id);
 		Assert.assertTrue("US15 is true", res);
 		count = 0;
 		for (int i = 0; i < 17; i++) {
@@ -48,6 +48,17 @@ public class TestSuites_Sprint2 extends TestCase {
 		}
 		boolean res1 = Sprint2_Checkout.us15_fewer_than_15_siblings(children1,
 				fam_id);
+<<<<<<< HEAD
+		Assert.assertTrue("US15 is true", res);
+		count = 0;
+		for (int i = 0; i < 17; i++) {
+			count++;
+			children1.add(count + "k");
+		}
+		boolean res1 = Sprint2_Checkout.us15_fewer_than_15_siblings(children1,
+				fam_id);
+=======
+>>>>>>> ad8afc3702d29cd03d96a58d5ce95f0ca0d1267c
 		Assert.assertFalse("US07 is false!", res1);
 		Assert.assertTrue("US15 is true", res == true);
 	}
@@ -56,8 +67,12 @@ public class TestSuites_Sprint2 extends TestCase {
 		String hus_name = "Yutong /Zhao/";
 		String wife_name = "Xintong /Zhao/";
 		String fam_id = "NNN";
+<<<<<<< HEAD
 		boolean res = Sprint2_Checkout.us16_male_last_names(hus_name,
 				wife_name, fam_id);
+=======
+		boolean res = Sprint2_Checkout.us16_male_last_names(hus_name, wife_name, fam_id);
+>>>>>>> ad8afc3702d29cd03d96a58d5ce95f0ca0d1267c
 		Assert.assertTrue("US16 is true", res);
 		String hus_name1 = "Yutong /K/";
 		String wife_name1 = "Xintong /T/";
@@ -101,14 +116,23 @@ public class TestSuites_Sprint2 extends TestCase {
 		Assert.assertFalse("US08 is false", res1 == true);
 	}
 
+<<<<<<< HEAD
 	// Chenglin US12 & US21
+=======
+	//Chenglin US12 & US21
+>>>>>>> ad8afc3702d29cd03d96a58d5ce95f0ca0d1267c
 	public void parentsNotTooOld() throws ParseException {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String family_id = "fam_id";
 		Date husband_birth = simpleDateFormat.parse("1940-08-26");
 		Date wife_birth = simpleDateFormat.parse("1940-08-24");
+<<<<<<< HEAD
 		List<String> children_id = new ArrayList<String>();
 		List<Indivdual> childrenList = new ArrayList<Indivdual>();
+=======
+		List<String> children_id = new ArrayList<>();
+		List<Indivdual> childrenList =  new ArrayList<>();
+>>>>>>> ad8afc3702d29cd03d96a58d5ce95f0ca0d1267c
 
 		children_id.add("01");
 		children_id.add("02");
@@ -128,11 +152,19 @@ public class TestSuites_Sprint2 extends TestCase {
 		child04.setID("04");
 		child05.setID("05");
 
+<<<<<<< HEAD
 		child01.setBirthday(simpleDateFormat.parse(new String("2000-07-25")));
 		child02.setBirthday(simpleDateFormat.parse(new String("2000-08-23")));
 		child03.setBirthday(simpleDateFormat.parse(new String("2000-08-25")));
 		child04.setBirthday(simpleDateFormat.parse(new String("2000-08-27")));
 		child05.setBirthday(simpleDateFormat.parse(new String("2000-09-23")));
+=======
+		child01.setBirthday(simpleDateFormat.parse(new String ("2000-07-25")));
+		child02.setBirthday(simpleDateFormat.parse(new String ("2000-08-23")));
+		child03.setBirthday(simpleDateFormat.parse(new String ("2000-08-25")));
+		child04.setBirthday(simpleDateFormat.parse(new String ("2000-08-27")));
+		child05.setBirthday(simpleDateFormat.parse(new String ("2000-09-23")));
+>>>>>>> ad8afc3702d29cd03d96a58d5ce95f0ca0d1267c
 
 		childrenList.add(child01);
 		childrenList.add(child02);
@@ -140,6 +172,7 @@ public class TestSuites_Sprint2 extends TestCase {
 		childrenList.add(child04);
 		childrenList.add(child05);
 		for (String child_id : children_id) {
+<<<<<<< HEAD
 			boolean res = Sprint2_Checkout.us12_parents_not_too_old(family_id,
 					husband_birth, wife_birth, child_id, childrenList);
 			if (child_id.equals("01") || child_id.equals("02")) {
@@ -148,6 +181,12 @@ public class TestSuites_Sprint2 extends TestCase {
 			} else
 				Assert.assertTrue("US12 is false for child: " + child_id,
 						res == false);
+=======
+			boolean res = Sprint2_Checkout.us12_parents_not_too_old(family_id, husband_birth, wife_birth, child_id, childrenList);
+			if (child_id.equals("01") || child_id.equals("02")) {
+				Assert.assertTrue("US12 is true for child: " + child_id, res == true);
+			} else Assert.assertTrue("US12 is false for child: " + child_id, res == false);
+>>>>>>> ad8afc3702d29cd03d96a58d5ce95f0ca0d1267c
 		}
 	}
 
@@ -162,6 +201,7 @@ public class TestSuites_Sprint2 extends TestCase {
 		String husband_gender4 = "F";
 		String wife_gender4 = "M";
 
+<<<<<<< HEAD
 		boolean res1 = Sprint2_Checkout.us21_correct_gender_for_role(family_id,
 				husband_gender1, wife_gender1);
 		Assert.assertTrue("US21 is true", res1 == true);
@@ -176,11 +216,23 @@ public class TestSuites_Sprint2 extends TestCase {
 		Assert.assertTrue("US21 is false", res4 == false);
 	}
 
+=======
+		boolean res1 = Sprint2_Checkout.us21_correct_gender_for_role(family_id, husband_gender1, wife_gender1);
+		Assert.assertTrue("US21 is true", res1 == true);
+		boolean res2 = Sprint2_Checkout.us21_correct_gender_for_role(family_id, husband_gender2, wife_gender2);
+		Assert.assertTrue("US21 is false", res2 == false);
+		boolean res3 = Sprint2_Checkout.us21_correct_gender_for_role(family_id, husband_gender3, wife_gender3);
+		Assert.assertTrue("US21 is false", res3 == false);
+		boolean res4 = Sprint2_Checkout.us21_correct_gender_for_role(family_id, husband_gender4, wife_gender4);
+		Assert.assertTrue("US21 is false", res4 == false);
+	}
+>>>>>>> ad8afc3702d29cd03d96a58d5ce95f0ca0d1267c
 	public void recent_births() {
 
 		String dateInString_1 = "10-Jan-2016";
 		String dateInString_2 = "10-Oct-2017";
 		SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+<<<<<<< HEAD
 		try {
 			Date date_Date_format_1 = format.parse(dateInString_1);
 			Date date_Date_format_2 = format.parse(dateInString_2);
@@ -196,11 +248,24 @@ public class TestSuites_Sprint2 extends TestCase {
 
 	}
 
+=======
+		try{ Date date_Date_format_1 = format.parse(dateInString_1);
+			Date date_Date_format_2 = format.parse(dateInString_2);
+			boolean res1 = Sprint2_Checkout.check_for_recent_births("I@134253@",date_Date_format_1);
+			Assert.assertTrue("US35 is false", res1 == false);
+			boolean res3 = Sprint2_Checkout.check_for_recent_births("I@1333353@",date_Date_format_2);
+			Assert.assertTrue("US35 is true", res1 == true);}catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+}
+>>>>>>> ad8afc3702d29cd03d96a58d5ce95f0ca0d1267c
 	public void recent_deaths() {
 
 		String dateInString_1 = "10-Jan-2016";
 		String dateInString_2 = "10-Oct-2017";
 		SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+<<<<<<< HEAD
 		try {
 			Date date_Date_format_1 = format.parse(dateInString_1);
 			Date date_Date_format_2 = format.parse(dateInString_2);
@@ -211,6 +276,14 @@ public class TestSuites_Sprint2 extends TestCase {
 					"I@1333353@", date_Date_format_2);
 			Assert.assertTrue("US36 is true", res1 == true);
 		} catch (ParseException e) {
+=======
+		try{ Date date_Date_format_1 = format.parse(dateInString_1);
+			Date date_Date_format_2 = format.parse(dateInString_2);
+			boolean res1 = Sprint2_Checkout.check_for_recent_births("I@134253@",date_Date_format_1);
+			Assert.assertTrue("US36 is false", res1 == false);
+			boolean res3 = Sprint2_Checkout.check_for_recent_births("I@1333353@",date_Date_format_2);
+			Assert.assertTrue("US36 is true", res1 == true);}catch (ParseException e) {
+>>>>>>> ad8afc3702d29cd03d96a58d5ce95f0ca0d1267c
 			e.printStackTrace();
 		}
 
