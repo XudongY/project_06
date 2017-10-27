@@ -15,13 +15,13 @@ import org.junit.Assert;
 
 import sprints.Sprint1_Checkout;
 
-public class TestSuites extends TestCase {
+public class TestSuites_Sprint1 extends TestCase {
 
-	public TestSuites() {
+	public TestSuites_Sprint1() {
 		super();
 	}
 
-	public TestSuites(String name) {
+	public TestSuites_Sprint1(String name) {
 		super(name);
 	}
 
@@ -148,14 +148,14 @@ public class TestSuites extends TestCase {
 
 	public static junit.framework.Test suite() {
 		TestSuite s = new TestSuite();
-		s.addTest(new TestSuites("Deathafterbirth"));
-		s.addTest(new TestSuites("marriage_Before_Death"));
-		s.addTest(new TestSuites("marrigeBeforeDivorce"));
-		s.addTest(new TestSuites("divorceBeforeDeath"));
-		s.addTest(new TestSuites("dates_before_current_date"));
-		s.addTest(new TestSuites("birth_before_marriage"));
-		// s.addTest(new TestSuites("No_bigamy"));
-		s.addTest(new TestSuites("isValid"));
+		s.addTest(new TestSuites_Sprint1("Deathafterbirth"));
+		s.addTest(new TestSuites_Sprint1("marriage_Before_Death"));
+		s.addTest(new TestSuites_Sprint1("marrigeBeforeDivorce"));
+		s.addTest(new TestSuites_Sprint1("divorceBeforeDeath"));
+		s.addTest(new TestSuites_Sprint1("dates_before_current_date"));
+		s.addTest(new TestSuites_Sprint1("birth_before_marriage"));
+		// s.addTest(new TestSuites_Sprint1("No_bigamy"));
+		s.addTest(new TestSuites_Sprint1("isValid"));
 		;
 		return s;
 	}
