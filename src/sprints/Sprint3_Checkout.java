@@ -2,12 +2,13 @@ package sprints;
 
 import important.Family;
 import important.Indivdual;
+import jnr.ffi.annotations.In;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.*;
 
 public class Sprint3_Checkout {
     public static HashMap<String, Date> recent_births = new HashMap<String, Date>();
@@ -29,6 +30,11 @@ public class Sprint3_Checkout {
             Date wife_death = null;
             Date wife_birth = null;
             Date child_birth = null;
+
+            String childName;
+            LocalDate childBirth;
+            int childAge;
+
             for (int i = 0; i < indivdualList.size(); ++i) {
                 if (fam.getHusbandID().equals(indivdualList.get(i).getID())) {
                     husband_id = indivdualList.get(i).getID();
@@ -64,11 +70,22 @@ public class Sprint3_Checkout {
                         }
                     }
                 }
-                for (String child_id : fam.getChildren()) {
 
+                if (husband_death != null && wife_death != null) {
+                    for (String child_id : fam.getChildren()) {
+                        if (child_id.equals(indivdualList.get(i).getID())) {
+                            childName = indivdualList.get(i).getName();
+                            child_birth = indivdualList.get(i).getBirthday();
+                            childBirth = child_birth.toInstant()
+                                    .atZone(ZoneId.systemDefault())
+                                    .toLocalDate();
+                            childAge = us33_helper_calculateAge(childBirth);
+                            us33_list_orphans(childAge, husband_death, wife_death, childName, child_id, fam.getID());
+                        }
+                    }
                 }
-
             }
+            us34_list_large_age_differences(husband_birth, wife_birth, fam.getMarried(), fam.getID());
         }
         return errors;
     }
@@ -90,6 +107,7 @@ public class Sprint3_Checkout {
         }
         return true;
     }
+
     public static boolean us09_birth_before_death_of_parents(Date parent_death, Date child_birth, String ID) {
         if(child_birth.after(parent_death)) {
             String error = "ERROR: INDIVIDUAL: US09: " + ID
@@ -99,6 +117,56 @@ public class Sprint3_Checkout {
         }
         return true;
     }
+
+    //US33 & US34 by Chenglin Wu
+    public static boolean us33_list_orphans(int childAge, Date fatherDeath, Date motherDeath, String childName, String childID, String famID) {
+        if (childAge > 0 && childAge < 18 && fatherDeath != null && motherDeath != null) {
+            addError(errors, "US33", "ORPHANS: INDIVIDUAL: US33: " + childName + "(" + childID + ")" + " is orphan.");
+            return true;
+        } else return false;
+    }
+
+    public static int us33_helper_calculateAge(LocalDate birthDate) {
+        if ((birthDate != null)) {
+            return Period.between(birthDate, LocalDate.now()).getYears();
+        } else {
+            return 0;
+        }
+    }
+
+    public static boolean us34_list_large_age_differences(Date husband_birth, Date wife_birth, Date merriage, String famID) {
+        LocalDate husbandBirth = husband_birth.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        LocalDate wifeBirth = wife_birth.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        LocalDate merriageDate = merriage.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        if (us34_helper_calculateAge(husbandBirth, merriageDate) > us34_helper_calculateAge(wifeBirth, merriageDate)) {
+            if (us34_helper_calculateAge(husbandBirth, merriageDate) - us34_helper_calculateAge(wifeBirth, merriageDate)
+                    >= us34_helper_calculateAge(wifeBirth, merriageDate)) {
+                addError(errors, "US34", "Large Age Difference: Family: " + famID + " Husband is more than twice as old as wife.");
+                return true;
+            } else return false;
+        } else if (us34_helper_calculateAge(husbandBirth, merriageDate) < us34_helper_calculateAge(wifeBirth, merriageDate)) {
+            if (us34_helper_calculateAge(wifeBirth, merriageDate) - us34_helper_calculateAge(husbandBirth, merriageDate)
+                    >= us34_helper_calculateAge(husbandBirth, merriageDate)) {
+                addError(errors, "US34", "Large Age Difference: Family: " + famID + " Wife is more than twice as old as husband.");
+                return true;
+            } else return false;
+        } else return false;
+    }
+
+    public static int us34_helper_calculateAge(LocalDate birthDate, LocalDate merriage) {
+        if ((birthDate != null)) {
+            return Period.between(birthDate, merriage).getYears();
+        } else {
+            return 0;
+        }
+    }
+
 
     public static void addError(HashMap<String, List<String>> errors,
                                 String key, String value) {
