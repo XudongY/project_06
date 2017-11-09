@@ -94,7 +94,7 @@ public class Sprint3_Checkout {
         if(child_birth.after(parent_death)) {
             String error = "ERROR: INDIVIDUAL: US09: " + ID
                     + ": Birth after death of parents.";
-            addError(errors, "US10", error);
+            addError(errors, "US09", error);
             return false;
         }
         return true;
