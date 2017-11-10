@@ -1,16 +1,11 @@
 package test;
-
-import com.sun.source.tree.AssertTree;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import sprints.Sprint2_Checkout;
 import sprints.Sprint3_Checkout;
-import sun.jvm.hotspot.utilities.Assert;
 
 public class TestSuites_Sprint3 extends TestCase {
     public TestSuites_Sprint3() {
