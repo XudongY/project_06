@@ -1,22 +1,22 @@
 If you want to choose a file, please press 1; if you want to test in console, please press 2.
     |           ID         |         NAME      |  GENDER |   BIRTHDAY  |   AGE   | ALIVE|    DEATH    |                CHILD                           |               SPOUSE                           | 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-    |@I6000000066658908059@|   Yutong /Zhao/   |    M    |  2016-07-11 |    1    | true |          NA |[@F6000000066694413863@, @F6000000066694413864@]|                                              NA|
-    |@I6000000066693817212@|      Hui /Wang/   |    F    |  1996-12-08 |    9    |false |  2008-02-14 |                        [@F6000000066695102020@]|                        [@F6000000066694413864@]|
-    |@I6000000066694413859@|     Yang /Zhao/   |    M    |  1967-09-24 |   50    | true |          NA |                        [@F6000000066694924894@]|                        [@F6000000066694413864@]|
-    |@I6000000066695185981@|    Zongmei /Wu/   |    F    |  2009-03-15 |    2    |false |  2015-02-14 |                                              NA|                        [@F6000000066695102020@]|
+    |@I6000000066693817211@|   Yutong /Zhao/   |    M    |  1816-11-11 |  201    | true |          NA |                        [@F6000000066694413864@]|                                              NA|
+    |@I6000000066693817212@|      Hui /Wang/   |    F    |  1976-12-08 |   41    | true |          NA |                        [@F6000000066695102020@]|                        [@F6000000066694413864@]|
+    |@I6000000066694413859@|     Yang /Zhao/   |    F    |  2008-11-24 |    9    | true |          NA |                        [@F6000000066694924894@]|                        [@F6000000066694413864@]|
+    |@I6000000066695185981@|    Zongmei /Wu/   |    F    |  1830-03-15 |    0    |false |  2017-10-21 |                                              NA|                        [@F6000000066695102020@]|
     |@I6000000066695317954@|    Dequn /Wang/   |    M    |  1933-04-14 |   84    | true |          NA |                                              NA|                        [@F6000000066695102020@]|
     |@I6000000066695102017@|      Lin /Wang/   |    F    |  1963-05-18 |   54    | true |          NA |                        [@F6000000066695102020@]|                        [@F6000000066695702834@]|
-    |@I6000000066695551907@|     Peng /Wang/   |    M    |  1000-10-30 | 1017    | true |          NA |                        [@F6000000066695102020@]|[@F6000000066694980187@, @F6000000066695035148@]|
+    |@I6000000066695551907@|     Peng /Wang/   |    M    |  1970-10-30 |   47    | true |          NA |                        [@F6000000066695102020@]|[@F6000000066694980187@, @F6000000066695035148@]|
     |@I6000000066695025978@|   Wanqiu /Zhao/   |    M    |  1936-02-12 |    8    |false |  2009-05-09 |                                              NA|                        [@F6000000066694924894@]|
     |@I6000000066695215897@|    Guijin /Hou/   |    F    |  1937-09-12 |   80    | true |          NA |                                              NA|                        [@F6000000066694924894@]|
     |@I6000000066694113339@|      Xia /Zhao/   |    F    |  1970-07-06 |   47    | true |          NA |                        [@F6000000066694924894@]|                        [@F6000000066695197859@]|
-    |@I6000000066694924891@|      Hui /Zhao/   |    F    |  1972-10-25 |   45    | true |          NA |                        [@F6000000066694924894@]|                        [@F6000000066695272834@]|
+    |@I6000000066694924891@|       Hui /Tao/   |    F    |  1972-08-17 |   45    | true |          NA |                        [@F6000000066694924894@]|                        [@F6000000066695272834@]|
     |@I6000000066695702831@|   Yongan /Wang/   |    M    |  1964-05-30 |   53    | true |          NA |                                              NA|                        [@F6000000066695702834@]|
     |@I6000000066695622897@|    Yafei /Wang/   |    F    |  1987-02-25 |   30    | true |          NA |                        [@F6000000066695702834@]|                                              NA|
     |@I6000000066694980184@|  Shuhua /Zhang/   |    F    |  1978-06-13 |   39    | true |          NA |                                              NA|                        [@F6000000066694980187@]|
     |@I6000000066694980185@|   Qiuzhen /Bai/   |    F    |  1971-02-12 |   46    | true |          NA |                                              NA|                        [@F6000000066695035148@]|
-    |@I6000000066695942834@|    Yuyao /Wang/   |    M    |  2007-05-05 |   10    | true |          NA |                        [@F6000000066694980187@]|                                              NA|
+    |@I6000000066695942834@|    Yuyao /Wang/   |    M    |  2017-10-01 |    0    | true |          NA |                        [@F6000000066694980187@]|                                              NA|
     |@I6000000066695888821@|      Yue /Wang/   |    F    |  1995-05-11 |   22    | true |          NA |                        [@F6000000066695035148@]|                                              NA|
     |@I6000000066695197856@|    Weidong /Li/   |    M    |  1969-10-03 |   48    | true |          NA |                                              NA|                        [@F6000000066695197859@]|
     |@I6000000066694630083@|     Xiaoyu /Li/   |    M    |  1997-08-08 |   20    | true |          NA |                        [@F6000000066695197859@]|                                              NA|
@@ -25,35 +25,55 @@ If you want to choose a file, please press 1; if you want to test in console, pl
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     |           ID          |    MARRIED   |   DIVORCED   |   HUSBAND ID          | HUSBAND NAME       |      WIFE ID          |    WIFE NAME       |                                    CHILDREN                             | 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-    | @F6000000066694413864@|   1992-07-25 |           NA | @I6000000066694413859@|      Yang /Zhao/   | @I6000000066693817212@|       Hui /Wang/   |                                                 [@I6000000066658908059@]|
-    | @F6000000066695102020@|   1962-09-17 |           NA | @I6000000066695317954@|     Dequn /Wang/   | @I6000000066695185981@|     Zongmei /Wu/   | [@I6000000066695102017@, @I6000000066695551907@, @I6000000066693817212@]|
-    | @F6000000066694924894@|   1966-09-13 |           NA | @I6000000066695025978@|    Wanqiu /Zhao/   | @I6000000066695215897@|     Guijin /Hou/   | [@I6000000066694413859@, @I6000000066694113339@, @I6000000066694924891@]|
+    | @F6000000066694413864@|   1992-07-25 |           NA | @I6000000066694413859@|      Yang /Zhao/   | @I6000000066693817212@|       Hui /Wang/   |                         [@I6000000066693817211@, @I6000000066693817211@]|
+    | @F6000000066695102020@|   1962-09-17 |           NA | @I6000000066695317954@|     Dequn /Wang/   | @I6000000066695185981@|     Zongmei /Wu/   | [@I6000000066695102017@, @I6000000066695551907@, @I6000000066693817212@, @I6000000066693817211@]|
+    | @F6000000066694924894@|   1966-09-13 |           NA | @I6000000066695025978@|    Wanqiu /Zhao/   | @I6000000066695215897@|     Guijin /Hou/   |                                                                       []|
     | @F6000000066695702834@|   1986-10-19 |           NA | @I6000000066695702831@|    Yongan /Wang/   | @I6000000066695102017@|       Lin /Wang/   |                                                 [@I6000000066695622897@]|
     | @F6000000066694980187@|   2006-07-05 |           NA | @I6000000066695551907@|      Peng /Wang/   | @I6000000066694980184@|   Shuhua /Zhang/   |                                                 [@I6000000066695942834@]|
     | @F6000000066695035148@|   1993-07-07 |   1996-08-13 | @I6000000066695551907@|      Peng /Wang/   | @I6000000066694980185@|    Qiuzhen /Bai/   |                                                 [@I6000000066695888821@]|
-    | @F6000000066695197859@|   1995-04-28 |           NA | @I6000000066695197856@|     Weidong /Li/   | @I6000000066694113339@|       Xia /Zhao/   |                                                 [@I6000000066694630083@]|
-    | @F6000000066695272834@|   1996-02-04 |           NA | @I6000000066695272831@|        Bai /Tao/   | @I6000000066694924891@|       Hui /Zhao/   |                                                 [@I6000000066695333821@]|
+    | @F6000000066695197859@|   1995-11-28 |           NA | @I6000000066695197856@|     Weidong /Li/   | @I6000000066694113339@|       Xia /Zhao/   |                                                 [@I6000000066694630083@]|
+    | @F6000000066695272834@|   1996-02-04 |           NA | @I6000000066695272831@|        Bai /Tao/   | @I6000000066694924891@|        Hui /Tao/   |                                                 [@I6000000066695333821@]|
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Sprint1 Checkout Result:
-US02: ERROR: FAMILY: US02: @F6000000066694413864@: Married 1992-07-25 before wife's (@I6000000066693817212@) birth on 1996-12-08
-US02: ERROR: FAMILY: US02: @F6000000066695102020@: Married 1962-09-17 before wife's (@I6000000066695185981@) birth on 2009-03-15
+US02: ERROR: FAMILY: US02: @F6000000066694413864@: Married 1992-07-25 before husband's (@I6000000066694413859@) birth on 2008-11-24
 
 Sprint2 Checkout Result:
-US08: ERROR: INDIVIDUAL: US08: @I6000000066695551907@: Born on 1000-10-30 before parents marry on 1962-09-17
-US07: ERROR: INDIVIDUAL: US07: @I6000000066695551907@: Age is more than 150.
+US08: ERROR: INDIVIDUAL: US08: @I6000000066693817211@: Born on 1816-11-11 before parents marry on 1992-07-25
+US08: ERROR: INDIVIDUAL: US08: @I6000000066693817211@: Born on 1816-11-11 before parents marry on 1992-07-25
+US08: ERROR: INDIVIDUAL: US08: @I6000000066693817211@: Born on 1816-11-11 before parents marry on 1962-09-17
+US07: ERROR: INDIVIDUAL: US07: @I6000000066693817211@: Age is more than 150.
+US07: ERROR: INDIVIDUAL: US07: @I6000000066695185981@: Age is more than 150.
 US16: ERROR: FAMILY: US16: @F6000000066694413864@: Does not have the same male last name.
 US16: ERROR: FAMILY: US16: @F6000000066695102020@: Does not have the same male last name.
 US16: ERROR: FAMILY: US16: @F6000000066694924894@: Does not have the same male last name.
 US16: ERROR: FAMILY: US16: @F6000000066694980187@: Does not have the same male last name.
 US16: ERROR: FAMILY: US16: @F6000000066695035148@: Does not have the same male last name.
 US16: ERROR: FAMILY: US16: @F6000000066695197859@: Does not have the same male last name.
-US16: ERROR: FAMILY: US16: @F6000000066695272834@: Does not have the same male last name.
-US12: ERROR: FAMILY: US12: @F6000000066695102020@: Father is more than 60 years older than child (@I6000000066693817212@).
-US12: ERROR: FAMILY: US12: @F6000000066694980187@: Father is more than 60 years older than child (@I6000000066695942834@).
-US12: ERROR: FAMILY: US12: @F6000000066695035148@: Father is more than 60 years older than child (@I6000000066695888821@).
+US36: PRINT: INDIVIDUAL: US36: @I6000000066695185981@: died on 2017-10-21 in recent 30 days.
+US12: ERROR: FAMILY: US12: @F6000000066695102020@: Mother is more than 60 years older than child (@I6000000066695102017@).
+US12: ERROR: FAMILY: US12: @F6000000066695102020@: Mother is more than 60 years older than child (@I6000000066695551907@).
+US12: ERROR: FAMILY: US12: @F6000000066695102020@: Mother is more than 60 years older than child (@I6000000066693817212@).
+US21: ERROR: FAMILY: US21: @F6000000066694413864@: Wrong gender for husband.
 
 Sprint3 Checkout Result:
-US10: ERROR: INDIVIDUAL: US10: @I6000000066693817212@: marriage before 14.
-US10: ERROR: INDIVIDUAL: US09: @I6000000066658908059@: Birth after death of parents.
-US10: ERROR: INDIVIDUAL: US10: @I6000000066695185981@: marriage before 14.
+US29: PRINT: INDIVIDUAL: US29: @I6000000066695025978@: Is deceased.
+US29: PRINT: INDIVIDUAL: US29: @I6000000066695185981@: Is deceased.
+US39: PRINT: INDIVIDUAL: US39: @F6000000066695197859@: Marriage anniversary 1995-11-28 is upcoming in recent 30 days.
+US38: PRINT: INDIVIDUAL: US38: @I6000000066693817212@: Birthday 1976-12-08 is upcoming in recent 30 days.
+US38: PRINT: INDIVIDUAL: US38: @I6000000066693817211@: Birthday 1816-11-11 is upcoming in recent 30 days.
+US38: PRINT: INDIVIDUAL: US38: @I6000000066694413859@: Birthday 2008-11-24 is upcoming in recent 30 days.
+US10: ERROR: INDIVIDUAL: US10: @I6000000066694413859@: marriage before 14.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066694980184@: Is alive and married on 2006-07-05.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066694980185@: Is alive and married on 1993-07-07.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066695197856@: Is alive and married on 1995-11-28.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066694924891@: Is alive and married on 1996-02-04.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066695702831@: Is alive and married on 1986-10-19.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066695551907@: Is alive and married on 1993-07-07.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066694113339@: Is alive and married on 1995-11-28.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066695317954@: Is alive and married on 1962-09-17.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066695215897@: Is alive and married on 1966-09-13.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066695102017@: Is alive and married on 1986-10-19.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066693817212@: Is alive and married on 1992-07-25.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066694413859@: Is alive and married on 1992-07-25.
+US30: PRINT: INDIVIDUAL: US30: @I6000000066695272831@: Is alive and married on 1996-02-04.
