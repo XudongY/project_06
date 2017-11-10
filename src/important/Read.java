@@ -44,6 +44,7 @@ public class Read {
 				HashMap<String, List<String>> errors_sprint1 = new HashMap<String, List<String>>();
 				HashMap<String, List<String>> errors_sprint2 = new HashMap<String, List<String>>();
 				HashMap<String, List<String>> errors_sprint3 = new HashMap<String, List<String>>();
+				HashMap<String, List<String>> errors_sprint4 = new HashMap<String, List<String>>();
 				while ((line = br.readLine()) != null) {
 					line = Tools.replaceBlank(line);
 					Parse.parse(line, indivdualList, familiesList);
