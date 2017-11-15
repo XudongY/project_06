@@ -30,6 +30,7 @@ public class Sprint4_Checkout {
     public static HashMap<String, List<String>> check_List(List<Indivdual> indivdualList, List<Family> familyList) {
         us22_Unique_IDs(indivdualList);
         us23_Unique_name_and_birth_date(indivdualList);
+        us27_include_individual_ages(indivdualList);
 
         for(Indivdual indi: indivdualList){
 
@@ -100,7 +101,7 @@ public class Sprint4_Checkout {
     // US13: Birth dates of siblings should be more than 8 months apart
     // or less than 2 days apart (twins may be born one day apart, e.g. 11:59 PM and 12:02 AM the following calendar day)
     public static void us13_siblings_spacing(List<Indivdual> children){
-        for(int i=0; i<children.size(); i++){
+        for(int i=0; i<children.size()-1; i++){
             System.out.println(children.get(i).getID()+"\t");
             for(int j=0; j<i; j++){
                 if(!us13_compare_birthday(children.get(i).getBirthday(), children.get(j).getBirthday())){
@@ -128,5 +129,23 @@ public class Sprint4_Checkout {
     }
 
     // US27:Include person's current age when listing individuals
+    public static void us27_include_individual_ages(List<Indivdual> indivdualList){
+        for(Indivdual indi: indivdualList){
+            if(indi.getDeath()== null){
+                String age = age_calculator(indi.getBirthday(), new Date());
+                addError(errors,"US27","PRINT: INDIVIDUAL: "+indi.getID()+": "+indi.getName()+" is "+age +" years old now.");
+            }else{
+                String age = age_calculator(indi.getBirthday(), indi.getDeath());
+                addError(errors,"US27","PRINT: INDIVIDUAL: "+indi.getID()+": "+indi.getName()+" paased at the age of "+age +".");
+            }
+        }
+    }
 
+    public static String age_calculator(Date birth, Date current){
+        long diff = current.getTime() - birth.getTime();
+        long days = 24*60*60*1000;
+        int age = (int)Math.floor(diff/(days*365));
+
+        return String.valueOf(age);
+    }
 }

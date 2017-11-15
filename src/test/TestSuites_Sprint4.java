@@ -86,11 +86,27 @@ public class TestSuites_Sprint4 extends TestCase{
         Assert.assertTrue("US13 is false", res3);
     }
 
+    public void test_age_calculator() throws ParseException{
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
+
+        Date d1 = simpleDateFormat.parse(new String("24 SEP 1995"));
+        Date d2 = simpleDateFormat.parse(new String("24 SEP 2016"));
+        String res1 = Sprint4_Checkout.age_calculator(d1, d2);
+        Assert.assertTrue("US13 is true.", res1.equals("21"));
+
+        Date d3 = simpleDateFormat.parse(new String("30 SEP 1916"));
+        Date d4 = simpleDateFormat.parse(new String("24 SEP 2016"));
+        String res2 = Sprint4_Checkout.age_calculator(d3, d4);
+        Assert.assertFalse("US13 is false", res2.equals("90"));
+
+    }
+
     public static junit.framework.Test suite() {
         TestSuite s = new TestSuite();
         s.addTest(new TestSuites_Sprint4("Unique_IDs"));
         s.addTest(new TestSuites_Sprint4("Unique_name_and_birth_date"));
         s.addTest(new TestSuites_Sprint4("siblings_spacing"));
+        s.addTest(new TestSuites_Sprint4("test_age_calculator"));
         return s;
     }
 }
