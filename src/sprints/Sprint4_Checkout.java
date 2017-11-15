@@ -26,7 +26,6 @@ public class Sprint4_Checkout {
     public static HashMap<String, List<String>> errors = new HashMap<String, List<String>>();
     public static HashSet<String> uniqueID = new HashSet<>();
     public static HashSet<String> uniqueNameAndBirth = new HashSet<>();
-    public static HashSet<String> siblings_spacing = new HashSet<>();
 
     public static HashMap<String, List<String>> check_List(List<Indivdual> indivdualList, List<Family> familyList) {
         us22_Unique_IDs(indivdualList);
@@ -37,16 +36,16 @@ public class Sprint4_Checkout {
         }
 
         for(Family fam: familyList){
-            if(fam.getChildren()!=null || fam.getChildren().size()!=0){
-                List<Date> children_birthdays = new ArrayList<>();
+            if(fam.getChildren()!=null && fam.getChildren().size()>1){
+                List<Indivdual> children = new ArrayList<>();
                 for(String child_id: fam.getChildren()){
                     for(Indivdual indi: indivdualList){
-                        if(child_id == indi.getID()){
-                            children_birthdays.add(indi.getBirthday());
+                        if(child_id.equals(indi.getID())){
+                            children.add(indi);
                         }
                     }
                 }
-
+                us13_siblings_spacing(children);
             }
         }
 
@@ -100,7 +99,33 @@ public class Sprint4_Checkout {
     // US13 and US27 are done by Yutong Zhao
     // US13: Birth dates of siblings should be more than 8 months apart
     // or less than 2 days apart (twins may be born one day apart, e.g. 11:59 PM and 12:02 AM the following calendar day)
+    public static void us13_siblings_spacing(List<Indivdual> children){
+        for(int i=0; i<children.size(); i++){
+            System.out.println(children.get(i).getID()+"\t");
+            for(int j=0; j<i; j++){
+                if(!us13_compare_birthday(children.get(i).getBirthday(), children.get(j).getBirthday())){
+                    addError(errors,"US13","ERROR: FAMILY: US13: "+children.get(i).getID()+
+                            ": has spacing conflicts with "+children.get(j).getID());
+                }
+            }
+            for(int j=i+1; j<children.size(); j++){
+                if(!us13_compare_birthday(children.get(i).getBirthday(), children.get(j).getBirthday())){
+                    addError(errors,"US13","ERROR: FAMILY: US13: "+children.get(i).getID()+
+                            ": has spacing conflicts with "+children.get(j).getID());
+                }
+            }
+        }
+    }
 
+    public static boolean us13_compare_birthday(Date b1, Date b2){
+        long birth1 = b1.getTime();
+        long birth2 = b2.getTime();
+        long day = Long.parseLong("86400000");
+        if(Math.abs(birth1-birth2)>2*day && Math.abs(birth1-birth2)<8*30*day){
+            return false;
+        }
+        return true;
+    }
 
     // US27:Include person's current age when listing individuals
 
