@@ -45,6 +45,9 @@ public class Sprint3_Checkout {
 		us38_list_upcoming_birthdays(upcoming_birthdays);
 
 		for (Family fam : familyList) {
+		    Indivdual husband = new Indivdual();
+		    Indivdual wife = new Indivdual();
+
 			String id = fam.getID();
 			Date marry_date = fam.getMarried();
 
@@ -69,6 +72,7 @@ public class Sprint3_Checkout {
 
 			for (int i = 0; i < indivdualList.size(); ++i) {
 				if (fam.getHusbandID().equals(indivdualList.get(i).getID())) {
+				    husband = indivdualList.get(i);
 					husband_id = indivdualList.get(i).getID();
 					husband_name = indivdualList.get(i).getName();
 					husband_death = indivdualList.get(i).getDeath();
@@ -91,6 +95,7 @@ public class Sprint3_Checkout {
 					}
 				}
 				if (fam.getWifeID().equals(indivdualList.get(i).getID())) {
+				    wife = indivdualList.get(i);
 					wife_id = indivdualList.get(i).getID();
 					wife_name = indivdualList.get(i).getName();
 					wife_death = indivdualList.get(i).getDeath();
@@ -112,12 +117,22 @@ public class Sprint3_Checkout {
 						}
 					}
 				}
-				for (String child_id : fam.getChildren()) {
-
-				}
-
 			}
-		}
+            if (!husband.isAlive() && !wife.isAlive()) {
+                for (String child_id : fam.getChildren()) {
+                    for (Indivdual child : indivdualList) {
+                        if (child_id.equals(child.getID())) {
+                            childBirth = child.getBirthday().toInstant()
+                                    .atZone(ZoneId.systemDefault())
+                                    .toLocalDate();
+                            childAge = us33_helper_calculateAge(childBirth);
+                            us33_list_orphans(childAge, husband.getDeath(), wife.getDeath(), child.getName(), child_id, fam.getID());
+                        }
+                    }
+                }
+            }
+            us34_list_large_age_differences(husband_birth, wife_birth, fam.getMarried(), fam.getID());
+        }
 		us30_list_living_married(living_married);
 		us39_list_for_upcoming_marriage_anniversaries(upcoming_marriage_anniversaries);
 
@@ -219,7 +234,7 @@ public class Sprint3_Checkout {
 
 	//US33 & US34 by Chenglin Wu
 	public static boolean us33_list_orphans(int childAge, Date fatherDeath, Date motherDeath, String childName, String childID, String famID) {
-		if (childAge > 0 && childAge < 18 && fatherDeath != null && motherDeath != null) {
+		if (childAge >= 0 && childAge < 18 && fatherDeath != null && motherDeath != null) {
 			addError(errors, "US33", "ORPHANS: INDIVIDUAL: US33: " + childName + "(" + childID + ")" + " is orphan.");
 			return true;
 		} else return false;
