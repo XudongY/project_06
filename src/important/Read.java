@@ -16,6 +16,7 @@ import javax.swing.filechooser.FileSystemView;
 import sprints.Sprint1_Checkout;
 import sprints.Sprint2_Checkout;
 import sprints.Sprint3_Checkout;
+import sprints.Sprint4_Checkout;
 
 public class Read {
 	public static void openFile() throws IOException {
@@ -44,6 +45,7 @@ public class Read {
 				HashMap<String, List<String>> errors_sprint1 = new HashMap<String, List<String>>();
 				HashMap<String, List<String>> errors_sprint2 = new HashMap<String, List<String>>();
 				HashMap<String, List<String>> errors_sprint3 = new HashMap<String, List<String>>();
+				HashMap<String, List<String>> errors_sprint4 = new HashMap<String, List<String>>();
 				while ((line = br.readLine()) != null) {
 					line = Tools.replaceBlank(line);
 					Parse.parse(line, indivdualList, familiesList);
@@ -54,6 +56,8 @@ public class Read {
 				errors_sprint2 = Sprint2_Checkout.check_List(indivdualList,
 						familiesList);
 				errors_sprint3 = Sprint3_Checkout.check_List(indivdualList,familiesList);
+				errors_sprint4 = Sprint4_Checkout.check_List(indivdualList,familiesList);
+
 				Print.print_arraylist_indivdual((ArrayList<Indivdual>) indivdualList);
 				Print.print_arraylist_family((ArrayList<Family>) familiesList);
 				// Print.print_Error((ArrayList<String>) errors);
@@ -63,6 +67,8 @@ public class Read {
 				Print.print_Error((HashMap<String, List<String>>) errors_sprint2);
 				System.out.println("\nSprint3 Checkout Result:");
 				Print.print_Error((HashMap<String, List<String>>) errors_sprint3);
+				System.out.println("\nSprint4 Checkout Result:");
+				Print.print_Error((HashMap<String, List<String>>) errors_sprint4);
 				// Close the input stream
 				br.close();
 				fis.close();
