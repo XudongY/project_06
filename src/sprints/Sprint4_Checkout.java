@@ -38,6 +38,10 @@ public class Sprint4_Checkout {
         }
 
         for (Family fam : familyList) {
+             String husband=fam.getHusbandID();
+            String wife=fam.getWifeID();
+            us18_married_siblings(husband, wife,familyList);
+            
             if (fam.getChildren() != null && fam.getChildren().size() > 1) {
                 List<Indivdual> children = new ArrayList<>();
                 for (String child_id : fam.getChildren()) {
@@ -53,6 +57,37 @@ public class Sprint4_Checkout {
         }
 
         return errors;
+    }
+    // US 18 and 19 are doen by Disha
+    public static boolean us18_married_siblings(String husband_ID, String wife_ID,List<Family> fam) {
+        boolean husbandInThisFamily=false;
+        boolean wifeInThisFamily=false;
+        String husband_dad_ID="0";
+        String husband_mom_ID="0";
+        String wife_dad_ID="0";
+        String wife_mom_ID="0";
+        for(Family f: fam){
+            for(String child:f.getChildren()){
+                if(husband_ID.equals(child)){
+                   husbandInThisFamily=true;
+                   husband_dad_ID=f.getHusbandID();
+                   husband_mom_ID=f.getWifeID();
+                }
+                if(wife_ID.equals(child)){
+                    wifeInThisFamily=true;
+                    wife_dad_ID=f.getHusbandID();
+                    wife_mom_ID=f.getWifeID();
+                }
+            }
+
+        }
+        if((husband_dad_ID.equals(wife_dad_ID))||(husband_mom_ID.equals(wife_mom_ID))){
+
+            String error = "ERROR: FAMILY  : US18: "+ husband_ID+" and "+wife_ID+" are married siblings.";
+            addError(errors, "US18", error);
+            return false;
+        }
+        return true;
     }
 
     // US22 and US23 are done by Xudong
