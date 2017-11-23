@@ -25,6 +25,7 @@ public class TestSuites_Sprint4 extends TestCase{
     }
     public List<Indivdual> indivdualList = new ArrayList<>();
     public List<Indivdual> indivdualList1 = new ArrayList<>();
+    public List<Family> familyList=new ArrayList<>();
 
     protected void setUp() throws Exception {
         Indivdual in1 = new Indivdual();
@@ -60,6 +61,14 @@ public class TestSuites_Sprint4 extends TestCase{
         org.junit.Assert.assertTrue("US22 is true", res == true);
         org.junit.Assert.assertFalse("US22 is false", res1 == true);
         //rg.junit.Assert.assertTrue("US09 is false", res == true);
+    }
+     //us18 by disha
+    public void Married_siblings() throws ParseException {
+        boolean res1 =Sprint4_Checkout.us18_married_siblings ("@I6000000066695317954@","@I6000000066695185981@",familyList);
+        boolean res2 = Sprint4_Checkout.us18_married_siblings( "@I6000000066695025978@","@I6000000066695215897@",familyList);
+        org.junit.Assert.assertTrue("US18 is true", res1 == false);
+        org.junit.Assert.assertFalse("US18 is false", res2 == true);
+       
     }
 
     public void Unique_name_and_birth_date() throws ParseException {
@@ -221,6 +230,7 @@ public class TestSuites_Sprint4 extends TestCase{
         s.addTest(new TestSuites_Sprint4("siblings_spacing"));
         s.addTest(new TestSuites_Sprint4("test_age_calculator"));
         s.addTest(new TestSuites_Sprint4("unique_family_by_spouse"));
+        s.addTest(new TestSuites_Sprint4("Married_siblings"));
         return s;
     }
 }
