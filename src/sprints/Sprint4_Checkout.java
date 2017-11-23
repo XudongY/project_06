@@ -89,7 +89,83 @@ public class Sprint4_Checkout {
         }
         return true;
     }
+    public static boolean us19_married_cousins(String husband_ID, String wife_ID,List<Family> fam) {
+        boolean husbandInThisFamily=false;
+        boolean wifeInThisFamily=false;
+        boolean Husband_dada_InThisFamily=false;
+        boolean Husband_dadi_InThisFamily=false;
+        boolean Husband_nana_InThisFamily=false;
+        boolean Husband_nani_InThisFamily=false;
+        boolean wife_dada_InThisFamily=false;
+        boolean wife_dadi_InThisFamily=false;
+        boolean wife_nana_InThisFamily=false;
+        boolean wife_nani_InThisFamily=false;
+        String husband_dad_ID="0";
+        String husband_mom_ID="0";
+        String wife_dad_ID="0";
+        String wife_mom_ID="0";
+        String husband_dada="0";
+        String husband_dadi="0";
+        String husband_nana="0";
+        String husband_nani="0";
+        String wife_dada="0";
+        String wife_dadi="0";
+        String wife_nana="0";
+        String wife_nani="0";
 
+
+        for(Family f: fam){
+            for(String child:f.getChildren()){
+                if(husband_ID.equals(child)){
+                    husbandInThisFamily=true;
+                    husband_dad_ID=f.getHusbandID();
+                    husband_mom_ID=f.getWifeID();
+                }
+                if(wife_ID.equals(child)){
+                    wifeInThisFamily=true;
+                    wife_dad_ID=f.getHusbandID();
+                    wife_mom_ID=f.getWifeID();
+                }
+            }
+
+        }
+
+        //for grandparents
+        for(Family f: fam){
+            for(String child:f.getChildren()){
+                if(husband_dad_ID.equals(child)){
+                    Husband_dada_InThisFamily=true;
+                   husband_dada=f.getHusbandID();
+                    husband_dadi=f.getWifeID();
+                }
+                if(husband_mom_ID.equals(child)){
+                    Husband_nani_InThisFamily=true;
+                    husband_nana=f.getHusbandID();
+                    husband_nani=f.getWifeID();
+                }
+                if(wife_dad_ID.equals(child)){
+                   wife_dada_InThisFamily=true;
+                    wife_dada=f.getHusbandID();
+                    wife_dadi=f.getWifeID();
+                }
+                if(wife_mom_ID.equals(child)){
+                    Husband_nani_InThisFamily=true;
+                    wife_nana=f.getHusbandID();
+                    wife_nani=f.getWifeID();
+                }
+
+            }
+
+        }
+        if(( husband_dada.equals(wife_dada))||(husband_dada.equals(wife_nana))|| (husband_nana.equals(wife_dada))||(husband_nana.equals(wife_nana))||
+                (husband_dadi.equals(wife_dadi))||(husband_dadi.equals(wife_nani))||(husband_nani.equals(wife_dadi))||(husband_nani.equals(wife_nani))){
+
+            String error = "ERROR: FAMILY  : US19: "+ husband_ID+" and "+wife_ID+" are married cousins.";
+            addError(errors, "US19", error);
+            return false;
+        }
+        return true;
+    }
     // US22 and US23 are done by Xudong
     public static boolean us22_Unique_IDs(List<Indivdual> indivdualList) {
         for (Indivdual in : indivdualList) {
