@@ -70,6 +70,15 @@ public class TestSuites_Sprint4 extends TestCase{
         org.junit.Assert.assertFalse("US18 is false", res2 == true);
        
     }
+     //us19 by disha
+    public void Married_cousins() throws ParseException {
+        boolean res1 =Sprint4_Checkout.us18_married_siblings ("@I6000000066694413859@","@I6000000066693817212@",familyList);
+        boolean res2 = Sprint4_Checkout.us18_married_siblings( "@I6000000066695025978@","@I6000000066695215897@", familyList);
+        org.junit.Assert.assertTrue("US18 is true", res1 == false);
+        org.junit.Assert.assertFalse("US18 is false", res2 == true);
+
+    }
+
 
     public void Unique_name_and_birth_date() throws ParseException {
         boolean res = Sprint4_Checkout.us23_Unique_name_and_birth_date(indivdualList);
@@ -231,6 +240,7 @@ public class TestSuites_Sprint4 extends TestCase{
         s.addTest(new TestSuites_Sprint4("test_age_calculator"));
         s.addTest(new TestSuites_Sprint4("unique_family_by_spouse"));
         s.addTest(new TestSuites_Sprint4("Married_siblings"));
+        s.addTest(new TestSuites_Sprint4("Married_cousins"));
         return s;
     }
 }
