@@ -32,15 +32,11 @@ public class Sprint4_Checkout {
         us23_Unique_name_and_birth_date(indivdualList);
         us24_unique_family_by_spouses(familyList);
         us27_include_individual_ages(indivdualList);
-
-        for (Indivdual indi : indivdualList) {
-
-        }
-
         for (Family fam : familyList) {
              String husband=fam.getHusbandID();
             String wife=fam.getWifeID();
             us18_married_siblings(husband, wife,familyList);
+            us19_married_cousins(husband,wife,familyList);
             
             if (fam.getChildren() != null && fam.getChildren().size() > 1) {
                 List<Indivdual> children = new ArrayList<>();
